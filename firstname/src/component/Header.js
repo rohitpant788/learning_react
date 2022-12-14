@@ -1,13 +1,30 @@
-import React from "react";
+import React, { Component, Fragment } from 'react'
+import './header.css'
 
-const Header =()=> {
+class Header extends Component {
+  constructor () {
+    super();
+    this.state = {
+        title: 'React Developer Funnel',
+        keyword: 'User Text Here '
+    }
+  }
+  render () {
+    return (
+      <Fragment>
+        <header>
+          <div className='logo'>{this.state.title}</div>
+          <center>
+            <input />
+            <div style={{ color: 'white', fontSize: '20px' }}>
+              {this.state.keyword}
+            </div>
+          </center>
+        </header>
+        <hr />
+      </Fragment>
+    )
+  }
+}
 
-    return(
-        <React.Fragment>
-            <center> <h1>React App </h1>  </center>
-            <hr/>
-        </React.Fragment>
-    );
-};
-
-export default Header;
+export default Header
