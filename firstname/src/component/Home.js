@@ -5,21 +5,36 @@ import ProductDisplay from './productDisplay'
 import JSON from './db.json'
 
 class Home extends React.Component {
+  constructor () {
+    super()
 
-    constructor(){
-        super();
-
-        this.state = {
-            productData: JSON
-        }
+    this.state = {
+      productData: JSON,
+      filteredData: JSON
     }
+  }
 
+  filterProduct = (userInput) => {
+    let output = this.state.productData.filter(
+      (item)=>{
+        return item.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1 ;
+      }
+    );
+
+    this.setState({
+      filteredData : output
+    });
+  }
 
   render () {
     return (
       <>
-        <Header />
-        <ProductDisplay prodData={this.state.productData}/>
+        {/* Here we are recieiving the data from the Child Component */}
+        <Header
+          userText={data => {this.filterProduct(data)
+          }}
+        />
+        <ProductDisplay prodData={this.state.filteredData} />
         <Footer year='2022' month='December' />
       </>
     )
