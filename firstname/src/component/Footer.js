@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 
 const Footer = (props) => {
-  console.log(props)
   return (
     <Fragment>
       <hr />
