@@ -32,7 +32,7 @@ class RestDetails extends React.Component {
           <div className='tileImage'>
             <div className='imageClass'>
               <img
-                src={details.resturant_thumb}
+                src={details.restaurant_thumb}
                 alt={details.restaurant_name}
               ></img>
             </div>
