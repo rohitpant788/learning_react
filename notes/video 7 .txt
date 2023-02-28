@@ -1,0 +1,25 @@
+
+
+
+----------------
+Calling API -
+
+The different ways to call an API - fetch, axios, and async/await.
+
+The URL to be called is defined using a const URL.
+
+Fetch is an inbuilt method in JavaScript that does not require installation or requiring anything.
+
+The method used to call the API depends on whether you want to get or insert data, and the backend team will tell you what method to use.(GET,POST,PUT,DELETE)
+
+When you call the API, it returns a promise.
+.then acts like a promise, allowing you to wait for the API to confirm that the task is done and the data is available
+
+The fetch function returns a promise, which resolves to the data returned by the server.
+
+The dot then is used to handle the resolved promise and update the state with the retrieved data using this.setState.
+
+A catch block can be used to handle errors, which can either update the state with an error message or print the error. 
+
+This syntax can be used to handle asynchronous requests in a React application.
+
