@@ -1,0 +1,34 @@
+import json
+
+class JsonObject:
+    def __init__(self, data):
+        self.__dict__ = json.loads(data)
+
+class StringField:
+    def __init__(self, serialized_name=None):
+        self.serialized_name = serialized_name
+
+class Network:
+    def __init__(self, subnet=None, netmask=None):
+        self.subnet = subnet
+        self.netmask = netmask
+
+class ClusterInfo:
+    def __init__(self, name=None, region=None, networks=None):
+        self.name = name
+        self.region = region
+        self.networks = [Network(**network) for network in (networks or [])]
+
+
+#The MergedData class is responsible for reading the merged.json file and parsing its contents.
+
+
+#the MergedData class reads the contents of the merged.json file and creates a list of ClusterInfo objects, each representing a single cluster from the file.
+class MergedData(JsonObject): # It inherits from the JsonObject class, which means it can use its methods and properties.
+    def __init__(self, filename):# The __init__ method is a special method that gets called when an object of this class is created. It takes one argument, which is the name of the file to be read.
+        with open(filename) as f:
+            data = f.read()
+        super().__init__(data)# The super().__init__(data) line calls the __init__ method of the JsonObject class and passes the data variable to it. This converts the JSON data in the file into a Python object.
+
+        self.ClusterInfo = ClusterInfo #creates a new property called ClusterInfo on the self object.
+        self.clusterInfo = [self.ClusterInfo(**cluster) for cluster in self.clusterInfo1]  # this is the root tag name in merged.json file , so we are iterating over it and passing each cluster as dictionary in the Constructor of ClusterInfo class , this is called lsit comprehnesion.
